@@ -13,7 +13,6 @@ const generateToken = (id) => {
 }
 
 // Register User and SignIn
-
 const register = async(req,res) => {
     res.send("Registro")
 }
