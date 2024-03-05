@@ -14,7 +14,37 @@ const generateToken = (id) => {
 
 // Register User and SignIn
 const register = async(req,res) => {
-    res.send("Registro")
+    const {name, email, password } = req.body
+
+    // check if user exist
+    const user = await User.findOne({email})
+    if(user) {
+        res.status(422).json({errors: ["Usuário já cadastrado, por favor insira outro e-mail"]})
+        return
+    }
+
+    // Generate passord hash
+    const salt = await bcrypt.genSalt()
+    const passwordHash = await bcrypt.hash(password, salt)
+
+    // Create user
+    const newUser = await User.create({
+        name,
+        email,
+        password: passwordHash
+    })
+
+    // successfully create
+    if(!newUser) {
+        res.status(422).json({errors: ["Houve um erro, por favor tente novamente mais tarde"]})
+    }
+
+    res.status(201).json({
+        _id: newUser._id,
+        token: generateToken(newUser._id)
+    })
+
+
 }
 
 module.exports = {
