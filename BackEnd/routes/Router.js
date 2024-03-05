@@ -6,6 +6,9 @@ router.get("/",(req,res)=>{
     res.send("Api funfando ")
 })
 
+// Routes
+
+// userRoutes
 router.use("/api/users", require("./UserRoutes"))
 
 module.exports = router
