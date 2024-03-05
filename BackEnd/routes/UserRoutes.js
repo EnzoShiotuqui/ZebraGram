@@ -5,9 +5,10 @@ const router = express()
 const {register} = require("../controllers/UserController")
 
 // Middlewares
-const validate = require('../middlewares/handleValidation')
+const validate = require('../middlewares/handleValidation');
+const {userCreateValidation} = require("../middlewares/userValidation")
 
 // Routes
-router.post("/register", validate, register)
+router.post("/register",  userCreateValidation() ,validate, register)
 
 module.exports = router
