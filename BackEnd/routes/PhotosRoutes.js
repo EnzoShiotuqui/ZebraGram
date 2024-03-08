@@ -8,6 +8,7 @@ const router = express.router
 const {photoInsertValidation} = require('../middlewares/photoValidation')
 const {authGuard} = require("../middlewares/authGuard")
 const {validate} = require('../middlewares/handleValidation')
+
 // routes
 
 
