@@ -10,5 +10,6 @@ router.get("/",(req,res)=>{
 
 // userRoutes
 router.use("/api/users", require("./UserRoutes"))
+router.use("/api/photos", require("./PhotosRoutes"))
 
 module.exports = router
