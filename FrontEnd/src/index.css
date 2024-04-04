@@ -46,7 +46,7 @@ input {
     border-radius: 2px;
     padding: 10px 8px;
     outline: none;
-    margin-bottom: 6em;
+    margin-bottom: .6em;
 }
 
 input::placeholder {
